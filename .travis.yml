@@ -19,9 +19,9 @@ deploy:
   - provider: releases
     api_key:
       secure: C37RSFHtkBhB1/H6dNM6z9h6MdCXZGZ6og8HfzunrIDTxYa8erLXNowGgOHBNwAl2ticn0fo7aBSa0WA65GINsFx+VTGyLYlmwFIF1Heps15f2vtdehbj+AB4RWh4bvT9xzG2aNUUsx57tHgt22TJwzH7Z1
-    file: bcloset-cpp-Linux.tar.gz
+    file: ntr-cpp-Linux.tar.gz
     on:
-      repo: BCloset/bcloset-cpp
+      repo: NicolasTr/ntr-cpp
       tags: true
       all_branches: true
       condition: $TRAVIS_OS_NAME == 'linux'
@@ -29,9 +29,9 @@ deploy:
   - provider: releases
     api_key:
       secure: C37RSFHtkBhB1/H6dNM6z9h6MdCXZGZ6og8HfzunrIDTxYa8erLXNowGgOHBNwAl2ticn0fo7aBSa0WA65GINsFx+VTGyLYlmwFIF1Heps15f2vtdehbj+AB4RWh4bvT9xzG2aNUUsx57tHgt22TJwzH7Z1
-    file: bcloset-cpp-Darwin.tar.gz
+    file: ntr-cpp-Darwin.tar.gz
     on:
-      repo: BCloset/bcloset-cpp
+      repo: NicolasTr/ntr-cpp
       tags: true
       all_branches: true
       condition: $TRAVIS_OS_NAME == 'osx'

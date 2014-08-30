@@ -19,4 +19,4 @@ test:
     - ./08_build_sqlite.sh
     - ./09_download_odb.sh
     - ./10_build_odb.sh
-    - tar zcf bcloset-cpp-$(uname).tar.gz dist/
+    - tar zcf ntr-cpp-$(uname).tar.gz dist/

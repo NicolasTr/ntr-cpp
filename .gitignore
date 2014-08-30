@@ -3,4 +3,4 @@ android-ndk*
 *.toolchain.cmake
 build
 dist
-bcloset-cpp.tar.gz
+ntr-cpp-*.tar.gz
