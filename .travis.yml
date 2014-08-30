@@ -18,7 +18,7 @@ script:
 deploy:
   - provider: releases
     api_key:
-      secure: V0VR/12QkbbTXK6GabksFOuc0mnPh5xy57EnfiTfEbP2m19fczI9crZKKfnokd8l+h3V4VG02SGO7hjjCC2eWKQGFS2ay+RI/a8ogNZ8O4BNTkPoXfzd4diHtBfV8KP/uzlb8h5TEm3N33nQg9yOt/zf6xYP/ivRoMRjGrRrLQ8=
+      secure: C37RSFHtkBhB1/H6dNM6z9h6MdCXZGZ6og8HfzunrIDTxYa8erLXNowGgOHBNwAl2ticn0fo7aBSa0WA65GINsFx+VTGyLYlmwFIF1Heps15f2vtdehbj+AB4RWh4bvT9xzG2aNUUsx57tHgt22TJwzH7Z1
     file: bcloset-cpp-Linux.tar.gz
     on:
       repo: BCloset/bcloset-cpp
@@ -28,7 +28,7 @@ deploy:
     skip_cleanup: true
   - provider: releases
     api_key:
-      secure: V0VR/12QkbbTXK6GabksFOuc0mnPh5xy57EnfiTfEbP2m19fczI9crZKKfnokd8l+h3V4VG02SGO7hjjCC2eWKQGFS2ay+RI/a8ogNZ8O4BNTkPoXfzd4diHtBfV8KP/uzlb8h5TEm3N33nQg9yOt/zf6xYP/ivRoMRjGrRrLQ8=
+      secure: C37RSFHtkBhB1/H6dNM6z9h6MdCXZGZ6og8HfzunrIDTxYa8erLXNowGgOHBNwAl2ticn0fo7aBSa0WA65GINsFx+VTGyLYlmwFIF1Heps15f2vtdehbj+AB4RWh4bvT9xzG2aNUUsx57tHgt22TJwzH7Z1
     file: bcloset-cpp-Darwin.tar.gz
     on:
       repo: BCloset/bcloset-cpp
