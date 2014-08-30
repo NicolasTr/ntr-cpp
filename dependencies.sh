@@ -19,5 +19,5 @@ chown -R $USER android-ndk-${ANDROID_NDK_VERSION}
 
 # 2) cmake
 #rm -f *.toolchain.cmake
-#wget -c https://raw.githubusercontent.com/taka-no-me/android-cmake/763b9f6ec43bf66f3b586669b68b9b6374c8f4b5/android.toolchain.cmake -O android.toolchain.cmake
-#wget -c https://ios-cmake.googlecode.com/hg/toolchain/iOS.cmake -O ios.toolchain.cmake
+wget -c https://raw.githubusercontent.com/taka-no-me/android-cmake/763b9f6ec43bf66f3b586669b68b9b6374c8f4b5/android.toolchain.cmake -O android.toolchain.cmake
+wget -c https://ios-cmake.googlecode.com/hg/toolchain/iOS.cmake -O ios.toolchain.cmake
