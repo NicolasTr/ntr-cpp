@@ -1,0 +1,40 @@
+os:
+- linux
+- osx
+before_install:
+# git config
+- echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+# updates
+- if [ `uname` != 'Darwin' ]; then sudo apt-get update -qq; fi
+- if [ `uname` == 'Darwin' ]; then brew update; fi
+# install tools
+- if [ `uname -m` = x86_64 ] && [ `uname` != 'Darwin' ]; then sudo apt-get install -qq --force-yes libgd2-xpm ia32-libs ia32-libs-multiarch build-essential; fi
+- if [ `uname` == 'Darwin' ]; then cd /usr/local && git checkout 716d4a9 Library/Formula/cmake.rb && brew install cmake && cd -; fi
+- if [ `uname` == 'Darwin' ]; then brew install gcc --enable-cxx; fi
+before_script:
+- ./dependencies.sh
+script:
+- ./build.sh
+deploy:
+  - provider: releases
+    api_key:
+      secure: V0VR/12QkbbTXK6GabksFOuc0mnPh5xy57EnfiTfEbP2m19fczI9crZKKfnokd8l+h3V4VG02SGO7hjjCC2eWKQGFS2ay+RI/a8ogNZ8O4BNTkPoXfzd4diHtBfV8KP/uzlb8h5TEm3N33nQg9yOt/zf6xYP/ivRoMRjGrRrLQ8=
+    file: bcloset-cpp-Linux.tar.gz
+    on:
+      repo: BCloset/bcloset-cpp
+      tags: true
+      all_branches: true
+      condition: $TRAVIS_OS_NAME == 'linux'
+    skip_cleanup: true
+  - provider: releases
+    api_key:
+      secure: V0VR/12QkbbTXK6GabksFOuc0mnPh5xy57EnfiTfEbP2m19fczI9crZKKfnokd8l+h3V4VG02SGO7hjjCC2eWKQGFS2ay+RI/a8ogNZ8O4BNTkPoXfzd4diHtBfV8KP/uzlb8h5TEm3N33nQg9yOt/zf6xYP/ivRoMRjGrRrLQ8=
+    file: bcloset-cpp-Darwin.tar.gz
+    on:
+      repo: BCloset/bcloset-cpp
+      tags: true
+      all_branches: true
+      condition: $TRAVIS_OS_NAME == 'osx'
+    skip_cleanup: true
+  
+

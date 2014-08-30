@@ -1,0 +1,22 @@
+dependencies: 
+  override:
+    - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+    - if [ `uname` != 'Darwin' ]; then sudo apt-get update -qq; fi
+    - if [ `uname` == 'Darwin' ]; then brew update; fi
+    - if [ `uname -m` = x86_64 ] && [ `uname` != 'Darwin' ]; then sudo apt-get install -qq --force-yes libgd2-xpm ia32-libs ia32-libs-multiarch build-essential; fi
+    - if [ `uname` == 'Darwin' ]; then cd /usr/local && git checkout 716d4a9 Library/Formula/cmake.rb && brew install cmake && cd -; fi
+    - if [ `uname` == 'Darwin' ]; then cd /usr/local && git checkout 716d4a9 Library/Formula/cmake.rb && brew install cmake && cd -; fi
+    - ./dependencies.sh
+test:
+  override:
+    - ./01_download_boost.sh
+    - ./02_build_boost.sh
+    - ./03_download_thrift.sh
+    - ./04_build_thrift.sh
+    - ./05_download_botan.sh
+    - ./06_build_botan.sh
+    - ./07_download_sqlite.sh
+    - ./08_build_sqlite.sh
+    - ./09_download_odb.sh
+    - ./10_build_odb.sh
+    - tar zcf bcloset-cpp-$(uname).tar.gz dist/

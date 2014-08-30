@@ -1,0 +1,37 @@
+cmake_minimum_required(VERSION 2.6.3)
+project(android-thrift)
+
+set(thrift_root ${CMAKE_CURRENT_SOURCE_DIR}/../src CACHE PATH "Thrift repo")
+
+set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -g -fPIC" )
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -std=c++0x -fPIC -Wno-deprecated-declarations -DUSE_BOOST_THREAD")
+
+# Exclude files
+file(GLOB thrift_srcs_base "${thrift_root}/lib/cpp/src/thrift/*.cpp")
+message("${thrift_root}/lib/cpp/src/")
+file(GLOB thrift_srcs_concurrency "${thrift_root}/lib/cpp/src/thrift/concurrency/*.cpp")
+file(GLOB thrift_srcs_processor "${thrift_root}/lib/cpp/src/thrift/processor/*.cpp")
+file(GLOB thrift_srcs_protocol "${thrift_root}/lib/cpp/src/thrift//protocol/*.cpp")
+file(GLOB thrift_srcs_server "${thrift_root}/lib/cpp/src/thrift/server/*.cpp")
+file(GLOB thrift_srcs_transport "${thrift_root}/lib/cpp/src/thrift/transport/*.cpp")
+set(thrift_srcs ${thrift_srcs_base} ${thrift_srcs_concurrency} ${thrift_srcs_processor} ${thrift_srcs_protocol} ${thrift_srcs_server} ${thrift_srcs_transport})
+list(REMOVE_ITEM thrift_srcs "${thrift_root}/lib/cpp/src/thrift/server/TNonblockingServer.cpp")
+list(REMOVE_ITEM thrift_srcs "${thrift_root}/lib/cpp/src/thrift/concurrency/StdMonitor.cpp")
+list(REMOVE_ITEM thrift_srcs "${thrift_root}/lib/cpp/src/thrift/concurrency/StdMutex.cpp")
+list(REMOVE_ITEM thrift_srcs "${thrift_root}/lib/cpp/src/thrift/concurrency/Mutex.cpp")
+list(REMOVE_ITEM thrift_srcs "${thrift_root}/lib/cpp/src/thrift/concurrency/StdThreadFactory.cpp")
+list(REMOVE_ITEM thrift_srcs "${thrift_root}/lib/cpp/src/thrift/concurrency/PosixThreadFactory.cpp")
+list(REMOVE_ITEM thrift_srcs "${thrift_root}/lib/cpp/src/thrift/transport/TSSLSocket.cpp")
+list(REMOVE_ITEM thrift_srcs "${thrift_root}/lib/cpp/src/thrift/transport/TSSLServerSocket.cpp")
+
+if(NOT "${IOS_PLATFORM}" STREQUAL "")
+
+elseif(NOT "${ANDROID_ABI}" STREQUAL "")
+    include_directories("${ANDROID_NDK}/sources/cxx-stl/gnu-libstdc++/4.8/include")
+    include_directories("${ANDROID_NDK}/platforms/android-${ANDROID_NDK_API_LEVEL}/arch-arm/usr/include/")
+else()
+    add_definitions(-DSTRERROR_R_CHAR_P=1)
+endif()
+add_library(thrift STATIC ${thrift_srcs})
+include_directories("${thrift_root}/lib/cpp/src/")
+include_directories("${thrift_root}/../../boost/src/")

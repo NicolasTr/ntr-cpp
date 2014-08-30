@@ -1,0 +1,6 @@
+android-sdk*
+android-ndk*
+*.toolchain.cmake
+build
+dist
+bcloset-cpp.tar.gz
