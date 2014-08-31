@@ -18,17 +18,19 @@ script:
 deploy:
   - provider: releases
     api_key:
-      secure: C37RSFHtkBhB1/H6dNM6z9h6MdCXZGZ6og8HfzunrIDTxYa8erLXNowGgOHBNwAl2ticn0fo7aBSa0WA65GINsFx+VTGyLYlmwFIF1Heps15f2vtdehbj+AB4RWh4bvT9xzG2aNUUsx57tHgt22TJwzH7Z1
+      secure: Fb9ioxVE4eEky2sgKGCWuL2N8QMV8gVY7QebNcX7mdgtot1Tg3PGlKk0cvrxiRej7rMT08dQUG3uu8bvInkoaBBe2jtGd8WCstjY5T4xbNYo6h1xZbry4w2mnE82JKTuS20KtZ6eM0udLnFpKt2dc9WCXAVp3Wqh8OwVTonH/Ro=
     file: ntr-cpp-Linux.tar.gz
     on:
       repo: NicolasTr/ntr-cpp
       tags: true
       all_branches: true
-      condition: $TRAVIS_OS_NAME == 'linux'
+#      Does not work without multi os enabled, replace with this when it will be
+#      condition: $TRAVIS_OS_NAME == 'linux'
+      condition: $HOME == '/home/travis'
     skip_cleanup: true
   - provider: releases
     api_key:
-      secure: C37RSFHtkBhB1/H6dNM6z9h6MdCXZGZ6og8HfzunrIDTxYa8erLXNowGgOHBNwAl2ticn0fo7aBSa0WA65GINsFx+VTGyLYlmwFIF1Heps15f2vtdehbj+AB4RWh4bvT9xzG2aNUUsx57tHgt22TJwzH7Z1
+      secure: Fb9ioxVE4eEky2sgKGCWuL2N8QMV8gVY7QebNcX7mdgtot1Tg3PGlKk0cvrxiRej7rMT08dQUG3uu8bvInkoaBBe2jtGd8WCstjY5T4xbNYo6h1xZbry4w2mnE82JKTuS20KtZ6eM0udLnFpKt2dc9WCXAVp3Wqh8OwVTonH/Ro=
     file: ntr-cpp-Darwin.tar.gz
     on:
       repo: NicolasTr/ntr-cpp
