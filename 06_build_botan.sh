@@ -30,6 +30,7 @@ function copy_headers {
 
 build_botan android-armeabi-v7a "-DCMAKE_TOOLCHAIN_FILE=$current_directory/android.toolchain.cmake -DANDROID_ABI=armeabi-v7a -DBOTAN_PLATFORM=linux-armv7a" make
 #build_botan android-armeabi "-DCMAKE_TOOLCHAIN_FILE=$current_directory/android.toolchain.cmake -DANDROID_ABI=armeabi -DBOTAN_PLATFORM=linux-arm" make
+build_botan android-x86 "-DCMAKE_TOOLCHAIN_FILE=$current_directory/android.toolchain.cmake -DANDROID_ABI=x86 -DBOTAN_PLATFORM=linux-x86" make
 
 if [ "${PLATFORM}" == "darwin" ]
 then
@@ -44,6 +45,7 @@ fi
 
 copy_headers android-armeabi-v7a linux-armv7a
 #copy_headers android-armeabi linux-arm
+copy_headers android-x86 linux-x86
 
 
 
