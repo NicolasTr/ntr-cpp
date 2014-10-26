@@ -28,7 +28,7 @@ elseif(NOT "${ANDROID_ABI}" STREQUAL "")
     message("${ANDROID_NDK}/platforms/android-${ANDROID_NDK_API_LEVEL}/arch-arm/usr/include/")
     include_directories("${DIST_DIRECTORY}/inc")
 else()
-
+    include_directories("${DIST_DIRECTORY}/inc")
 endif()
 
 add_library(odb STATIC ${odb_srcs})
@@ -37,3 +37,4 @@ include_directories("${odb_root}")
 include_directories("${odb_sqlite_root}")
 include_directories("${odb_qt_root}")
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/../../../vendor/out-include/local")
+

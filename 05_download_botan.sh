@@ -22,6 +22,7 @@ function configure_botan {
 }
 
 configure_botan linux x86_64 gcc
+configure_botan linux x86 gcc
 configure_botan linux arm gcc
 configure_botan linux armv7a gcc
 

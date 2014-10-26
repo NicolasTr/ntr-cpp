@@ -25,7 +25,8 @@ function copy_headers {
 }
 
 build_sqlite android-armeabi-v7a "-DCMAKE_TOOLCHAIN_FILE=$current_directory/android.toolchain.cmake -DANDROID_ABI=armeabi-v7a" make
-build_sqlite android-armeabi "-DCMAKE_TOOLCHAIN_FILE=$current_directory/android.toolchain.cmake -DANDROID_ABI=armeabi" make
+#build_sqlite android-armeabi "-DCMAKE_TOOLCHAIN_FILE=$current_directory/android.toolchain.cmake -DANDROID_ABI=armeabi" make
+build_sqlite android-x86 "-DCMAKE_TOOLCHAIN_FILE=$current_directory/android.toolchain.cmake -DANDROID_ABI=x86" make
 
 if [ "${PLATFORM}" == "darwin" ]
 then
@@ -39,4 +40,6 @@ else
 fi
 
 copy_headers android-armeabi-v7a
-copy_headers android-armeabi
+#copy_headers android-armeabi
+copy_headers android-x86
+
