@@ -29,7 +29,7 @@ function copy_headers {
 }
 
 build_odb android-armeabi-v7a "-DCMAKE_TOOLCHAIN_FILE=$current_directory/android.toolchain.cmake -DANDROID_ABI=armeabi-v7a" make
-build_odb android-armeabi "-DCMAKE_TOOLCHAIN_FILE=$current_directory/android.toolchain.cmake -DANDROID_ABI=armeabi" make
+#build_odb android-armeabi "-DCMAKE_TOOLCHAIN_FILE=$current_directory/android.toolchain.cmake -DANDROID_ABI=armeabi" make
 
 if [ "${PLATFORM}" == "darwin" ]
 then
@@ -43,4 +43,4 @@ else
 fi
 
 copy_headers android-armeabi-v7a
-copy_headers android-armeabi
+#copy_headers android-armeabi
